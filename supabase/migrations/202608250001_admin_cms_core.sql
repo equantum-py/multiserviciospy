@@ -1,6 +1,7 @@
 create extension if not exists pgcrypto;
 
 create or replace function public.set_updated_at() returns trigger language plpgsql as $$ begin new.updated_at = now(); return new; end; $$;
+alter function public.set_updated_at() set search_path = pg_catalog;
 
 create table if not exists public.categories (
  id uuid primary key default gen_random_uuid(), name text not null, slug text not null unique, description text, icon text, image_url text,
