@@ -2,58 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  color-scheme: light;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
   margin: 0;
-  background: #ffffff;
+  background: #f3f5f2;
   color: #17251d;
   font-family: var(--font-inter), Inter, Arial, Helvetica, sans-serif;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button,
-input,
-select {
-  font: inherit;
-}
-
-h1,
-h2,
-h3,
-p {
-  margin-top: 0;
-}
-
-::selection {
-  background: #f2b705;
-  color: #17251d;
-}
-
-.container-shell {
-  width: min(1180px, calc(100% - 32px));
-  margin-inline: auto;
-}
-
-@media (max-width: 360px) {
-  .container-shell {
-    width: min(100% - 24px, 1180px);
-  }
+a { color: inherit; text-decoration: none; }
+button, input, select { font: inherit; }
+h1, h2, h3, p { margin-top: 0; }
+::selection { background: #f2b705; color: #17251d; }
+.container-shell { width: min(1320px, calc(100% - 40px)); margin-inline: auto; }
+.platform-surface { background: #fff; border: 1px solid rgba(23,37,29,.08); }
+.platform-focus:focus-visible { outline: 2px solid #f2b705; outline-offset: 3px; }
+@media (max-width: 640px) {
+  .container-shell { width: min(100% - 24px, 1320px); }
 }
