@@ -4,56 +4,76 @@
 
 :root {
   color-scheme: light;
+  --color-primary: #102a43;
+  --color-primary-dark: #0b1f33;
+  --color-accent: #f97316;
+  --color-accent-hover: #c2410c;
+  --color-accent-soft: #fff4eb;
+  --color-background: #f6f8fa;
+  --color-surface: #ffffff;
+  --color-text-primary: #17212b;
+  --color-text-secondary: #64748b;
+  --color-border: #e2e8f0;
 }
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
   margin: 0;
-  background: #ffffff;
-  color: #17251d;
+  background: var(--color-background);
+  color: var(--color-text-primary);
   font-family: var(--font-inter), Inter, Arial, Helvetica, sans-serif;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
+a { color: inherit; text-decoration: none; }
+button, input, select { font: inherit; }
+h1, h2, h3, p { margin-top: 0; }
+::selection { background: #fed7aa; color: var(--color-primary-dark); }
+.container-shell { width: min(1320px, calc(100% - 40px)); margin-inline: auto; }
+.platform-surface { background: var(--color-surface); border: 1px solid var(--color-border); }
+.platform-focus:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
 
-a {
-  color: inherit;
-  text-decoration: none;
+/* Home banner slot.
+   TEMPORARY development artwork: replace these URLs with the final campaign banners.
+   Recommended source sizes: desktop 1920x600, mobile 1080x1350. */
+#inicio {
+  min-height: 0;
+  aspect-ratio: 16 / 5;
+  background-image: url("https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1920&h=600&q=86");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+#inicio > .container-shell { display: none; }
 
-button,
-input,
-select {
-  font: inherit;
-}
+/* Palette migration for approved Home structure. These overrides intentionally
+   redistribute legacy green/yellow surfaces instead of doing a blind color swap. */
+main[class~="bg-[#f3f5f2]"] { background: var(--color-background) !important; }
+[class~="bg-[#fff1b8]"] { background: var(--color-accent-soft) !important; }
+[class~="bg-[#fff2b8]"] { background: var(--color-accent-soft) !important; }
+[class~="bg-[#fff0b8]"] { background: #eff6ff !important; }
+[class~="bg-[#edf1ec]"] { background: #eff6ff !important; }
+[class~="bg-[#e9ece7]"] { background: #f1f5f9 !important; }
+[class~="bg-[#f7f9f6]"] { background: #ffffff !important; }
+[class~="hover:bg-[#fbfcfa]"]:hover { background: #eff6ff !important; }
+[class~="hover:bg-[#f8faf7]"]:hover { background: #f8fafc !important; }
+[class~="hover:bg-[#26372d]"]:hover { background: var(--color-primary-dark) !important; }
+[class~="ring-[#d8aa1f]"] { --tw-ring-color: #fed7aa !important; }
+[class~="hover:ring-[#a77e00]"]:hover { --tw-ring-color: var(--color-accent) !important; }
+[class~="text-[#775600]"] { color: #c2410c !important; }
 
-h1,
-h2,
-h3,
-p {
-  margin-top: 0;
-}
+/* Primary orange actions use white text; the orange logo tile keeps blue ink. */
+a.bg-brand-500,
+button.bg-brand-500 { color: #ffffff !important; }
+a.bg-brand-500:hover,
+button.bg-brand-500:hover { background: var(--color-accent-hover) !important; }
 
-::selection {
-  background: #f2b705;
-  color: #17251d;
-}
-
-.container-shell {
-  width: min(1180px, calc(100% - 32px));
-  margin-inline: auto;
-}
-
-@media (max-width: 360px) {
-  .container-shell {
-    width: min(100% - 24px, 1180px);
+@media (max-width: 640px) {
+  .container-shell { width: min(100% - 24px, 1320px); }
+  #inicio {
+    aspect-ratio: 4 / 5;
+    background-image: url("https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1080&h=1350&q=84");
+    background-position: center;
   }
 }

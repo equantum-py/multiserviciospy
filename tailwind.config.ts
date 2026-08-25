@@ -9,17 +9,20 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          50: "#fff9e6",
-          100: "#fff0b8",
-          400: "#f7c948",
-          500: "#f2b705",
-          600: "#d89f00",
+          50: "#fff4eb",
+          100: "#ffedd5",
+          400: "#fb923c",
+          500: "#f97316",
+          600: "#c2410c",
         },
-        ink: "#1d2a22",
-        soft: "#f7f4ec",
+        ink: "#102a43",
+        "ink-dark": "#0b1f33",
+        soft: "#f6f8fa",
+        muted: "#64748b",
+        border: "#e2e8f0",
       },
       boxShadow: {
-        card: "0 12px 30px rgba(28, 42, 34, 0.08)",
+        card: "0 10px 28px rgba(15, 42, 67, 0.07)",
       },
     },
   },
