@@ -47,8 +47,7 @@ h1, h2, h3, p { margin-top: 0; }
 }
 #inicio > .container-shell { display: none; }
 
-/* Palette migration for approved Home structure. These overrides intentionally
-   redistribute legacy green/yellow surfaces instead of doing a blind color swap. */
+/* Palette migration for approved Home structure. */
 main[class~="bg-[#f3f5f2]"] { background: var(--color-background) !important; }
 [class~="bg-[#fff1b8]"] { background: var(--color-accent-soft) !important; }
 [class~="bg-[#fff2b8]"] { background: var(--color-accent-soft) !important; }
@@ -63,7 +62,6 @@ main[class~="bg-[#f3f5f2]"] { background: var(--color-background) !important; }
 [class~="hover:ring-[#a77e00]"]:hover { --tw-ring-color: var(--color-accent) !important; }
 [class~="text-[#775600]"] { color: #c2410c !important; }
 
-/* Primary orange actions use white text; the orange logo tile keeps blue ink. */
 a.bg-brand-500,
 button.bg-brand-500 { color: #ffffff !important; }
 a.bg-brand-500:hover,
@@ -71,9 +69,76 @@ button.bg-brand-500:hover { background: var(--color-accent-hover) !important; }
 
 @media (max-width: 640px) {
   .container-shell { width: min(100% - 24px, 1320px); }
+
+  /* Mobile V3: banner first, with a dedicated mobile crop and no legacy hero content. */
   #inicio {
     aspect-ratio: 4 / 5;
     background-image: url("https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1080&h=1350&q=84");
     background-position: center;
   }
+
+  /* One primary request path: remove the duplicated quotation card on mobile. */
+  #inicio + section > .container-shell > a:nth-child(2) { display: none; }
+  #inicio + section > .container-shell > a:first-child {
+    min-height: 0;
+    padding: 16px;
+  }
+  #inicio + section > .container-shell > a:first-child h2 { font-size: 20px; line-height: 1.2; }
+  #inicio + section > .container-shell > a:first-child p { font-size: 14px; }
+  #inicio + section > .container-shell > a:first-child > span { margin-top: 12px; min-height: 44px; }
+
+  /* Categories stay discoverable without becoming a second catalogue. */
+  #categorias { padding-bottom: 24px; }
+  #categorias .mb-4 { margin-bottom: 12px; }
+  #categorias h2 { font-size: 22px; line-height: 1.2; }
+  #categorias .grid > a { min-height: 64px; padding: 10px; }
+  #categorias .grid > a span:last-child { font-size: 14px; }
+
+  /* Featured services: exactly three, same 4:3 image ratio, readable but tighter. */
+  #destacados { padding-top: 24px; padding-bottom: 24px; }
+  #destacados > .container-shell > .mb-5 { margin-bottom: 14px; }
+  #destacados h2 { font-size: 22px; line-height: 1.2; }
+  #destacados > .container-shell > .grid:first-of-type { gap: 12px; }
+  #destacados > .container-shell > .grid:first-of-type > a > div:last-child { padding: 14px; }
+  #destacados > .container-shell > .grid:first-of-type h3 { font-size: 17px; }
+  #destacados > .container-shell > .grid:first-of-type p { font-size: 14px; line-height: 1.4; }
+
+  /* Home is not the full catalogue: show only six additional services. */
+  #destacados > .container-shell > .grid:nth-of-type(2) > a:nth-child(n+7) { display: none; }
+  #destacados > .container-shell > .grid:nth-of-type(2) { gap: 10px; }
+  #destacados > .container-shell > .grid:nth-of-type(2) > a > div:first-child { aspect-ratio: 4 / 3; }
+  #destacados > .container-shell > .grid:nth-of-type(2) > a > div:last-child { padding: 10px; }
+  #destacados > .container-shell > .grid:nth-of-type(2) > a > div:last-child > span:first-child,
+  #destacados > .container-shell > .grid:nth-of-type(2) p { display: none; }
+  #destacados > .container-shell > .grid:nth-of-type(2) h3 {
+    margin-top: 0;
+    font-size: 14px;
+    line-height: 1.25;
+  }
+  #destacados > .container-shell > .grid:nth-of-type(2) h3 + span {
+    margin-top: 8px;
+    min-height: 32px;
+    align-items: center;
+    font-size: 13px;
+  }
+
+  /* Compact timeline-style close. */
+  #como-funciona { padding-top: 22px; padding-bottom: 22px; }
+  #como-funciona h2 { font-size: 22px; }
+  #como-funciona .grid.overflow-hidden > div { min-height: 54px; padding: 10px 14px; }
+  #como-funciona .grid.overflow-hidden h3 { font-size: 14px; font-weight: 600; }
+
+  #atencion-central .rounded-xl { gap: 16px; padding: 18px; }
+  #atencion-central h2 { font-size: 24px; line-height: 1.15; }
+  #atencion-central p { font-size: 14px; line-height: 1.45; }
+  #atencion-central a { min-height: 48px; font-size: 14px; }
+
+  #prestadores .rounded-xl { gap: 12px; padding: 16px; }
+  #prestadores h2 { font-size: 19px; line-height: 1.25; }
+  #prestadores p { font-size: 14px; }
+  #prestadores a { min-height: 44px; font-size: 13px; }
+
+  footer { padding-top: 18px !important; padding-bottom: 24px !important; }
+  footer .container-shell { gap: 16px; }
+  footer p, footer a { font-size: 13px; }
 }
