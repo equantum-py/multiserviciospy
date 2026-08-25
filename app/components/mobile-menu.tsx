@@ -4,8 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const links = [
-  { href: "#categorias", label: "Categorías" },
-  { href: "#servicios", label: "Servicios" },
+  { href: "#categorias", label: "Servicios" },
+  { href: "#destacados", label: "Destacados" },
   { href: "#como-funciona", label: "Cómo funciona" },
   { href: "#prestadores", label: "Prestadores" },
 ];
@@ -67,7 +67,7 @@ export function MobileMenu() {
         ref={triggerRef}
         type="button"
         onClick={() => setOpen(true)}
-        className="grid h-11 w-11 place-items-center rounded-xl border border-black/10 bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 sm:hidden"
+        className="grid h-11 w-11 place-items-center rounded-xl border border-white/20 bg-white text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 sm:hidden"
         aria-label="Abrir menú"
         aria-expanded={open}
         aria-controls="mobile-navigation"
@@ -79,7 +79,7 @@ export function MobileMenu() {
         <div className="fixed inset-0 z-50 sm:hidden" role="dialog" aria-modal="true" aria-label="Menú principal">
           <button
             type="button"
-            className="absolute inset-0 bg-black/35"
+            className="absolute inset-0 bg-black/40"
             aria-label="Cerrar menú"
             onClick={() => setOpen(false)}
             tabIndex={-1}
@@ -87,7 +87,7 @@ export function MobileMenu() {
           <div
             ref={panelRef}
             id="mobile-navigation"
-            className="absolute right-0 top-0 flex h-full w-[min(86vw,340px)] flex-col bg-white px-5 pb-6 pt-5 shadow-2xl"
+            className="absolute right-0 top-0 flex h-full w-[min(86vw,340px)] flex-col bg-white px-5 pb-[calc(1.5rem+env(safe-area-inset-bottom))] pt-[calc(1.25rem+env(safe-area-inset-top))] shadow-2xl"
           >
             <div className="flex items-center justify-between border-b border-black/[.06] pb-4">
               <span className="text-sm font-semibold">Menú</span>
