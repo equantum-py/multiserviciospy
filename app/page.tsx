@@ -191,7 +191,7 @@ export default function HomePage() {
             <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#fff3bf] text-ink"><MessageCircle size={19} /></span>
             <div><p className="mb-1 text-[11px] font-semibold uppercase tracking-[.12em] text-brand-600">Atención central</p><p className="mb-0 text-[15px] font-medium">{siteConfig.centralAttentionLabel}</p></div>
           </div>
-          <p className="max-w-md text-[12px] leading-5 text-black/50">El teléfono y WhatsApp oficial se conectarán desde una única configuración cuando queden confirmados.</p>
+          <p className="max-w-md text-[13px] leading-5 text-black/55">Centralizamos la atención, cotización y coordinación de tus servicios desde un solo lugar.</p>
         </div>
       </section>
 
