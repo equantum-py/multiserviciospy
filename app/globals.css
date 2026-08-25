@@ -17,9 +17,11 @@ html {
 body {
   margin: 0;
   background: #ffffff;
-  color: #1d2a22;
-  font-family: Arial, Helvetica, sans-serif;
+  color: #17251d;
+  font-family: var(--font-inter), Inter, Arial, Helvetica, sans-serif;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 a {
@@ -33,9 +35,16 @@ select {
   font: inherit;
 }
 
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
 ::selection {
   background: #f2b705;
-  color: #1d2a22;
+  color: #17251d;
 }
 
 .container-shell {
