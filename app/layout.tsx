@@ -9,9 +9,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "TodoServicios PY | Encontrá profesionales cerca tuyo",
+  title: "TodosServicios PY | Un solo contacto para todos tus servicios",
   description:
-    "Encontrá servicios para tu hogar, vehículo, jardín y negocio. Compará profesionales, pedí presupuesto y reservá fácilmente.",
+    "Contanos qué necesitás. TodosServicios PY centraliza la atención, evaluación, cotización y coordinación de servicios para hogar, vehículos y negocios en Paraguay.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
