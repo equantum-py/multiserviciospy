@@ -17,15 +17,7 @@
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  background: var(--color-background);
-  color: var(--color-text-primary);
-  font-family: var(--font-inter), Inter, Arial, Helvetica, sans-serif;
-  font-weight: 400;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
+body { margin: 0; background: var(--color-background); color: var(--color-text-primary); font-family: var(--font-inter), Inter, Arial, Helvetica, sans-serif; font-weight: 400; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
 a { color: inherit; text-decoration: none; }
 button, input, select { font: inherit; }
 h1, h2, h3, p { margin-top: 0; }
@@ -34,17 +26,8 @@ h1, h2, h3, p { margin-top: 0; }
 .platform-surface { background: var(--color-surface); border: 1px solid var(--color-border); }
 .platform-focus:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
 
-/* Home banner slot. Temporary artwork; replace with final campaign assets. */
-#inicio {
-  min-height: 0;
-  aspect-ratio: 16 / 5;
-  background-image: url("https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1920&h=600&q=86");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+#inicio { min-height: 0; aspect-ratio: 16 / 5; background-image: url("https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1920&h=600&q=86"); background-position: center; background-repeat: no-repeat; background-size: cover; }
 #inicio > .container-shell { display: none; }
-
 main[class~="bg-[#f3f5f2]"] { background: var(--color-background) !important; }
 [class~="bg-[#fff1b8]"], [class~="bg-[#fff2b8]"] { background: var(--color-accent-soft) !important; }
 [class~="bg-[#fff0b8]"], [class~="bg-[#edf1ec]"] { background: #eff6ff !important; }
@@ -61,14 +44,7 @@ a.bg-brand-500:hover, button.bg-brand-500:hover { background: var(--color-accent
 
 @media (max-width: 640px) {
   .container-shell { width: min(100% - 24px, 1320px); }
-
-  #inicio {
-    aspect-ratio: 4 / 5;
-    background-image: url("https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1080&h=1350&q=84");
-    background-position: center;
-  }
-
-  /* One request path. */
+  #inicio { aspect-ratio: 4 / 5; background-image: url("https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1080&h=1350&q=84"); background-position: center; }
   #inicio + section > .container-shell > a:nth-child(2) { display: none; }
   #inicio + section > .container-shell > a:first-child { min-height: 0; padding: 16px; }
   #inicio + section > .container-shell > a:first-child h2 { font-size: 20px; line-height: 1.2; }
@@ -81,11 +57,12 @@ a.bg-brand-500:hover, button.bg-brand-500:hover { background: var(--color-accent
   #categorias .grid > a { min-height: 64px; padding: 10px; }
   #categorias .grid > a span:last-child { font-size: 14px; }
 
-  /* Mobile V4: native swipe carousel, 88% card width + next-card affordance. */
   #destacados { padding-top: 24px; padding-bottom: 24px; overflow: hidden; }
   #destacados > .container-shell > .mb-5 { margin-bottom: 14px; }
   #destacados h2 { font-size: 22px; line-height: 1.2; }
-  #destacados > .container-shell > .grid:first-of-type {
+
+  /* Featured services: compact photographic carousel. Explicit service hooks avoid brittle nth-of-type selectors. */
+  #destacados .grid:has(> a[href*="electricidad-automotriz"]) {
     display: flex;
     width: calc(100vw - 12px);
     gap: 12px;
@@ -94,106 +71,39 @@ a.bg-brand-500:hover, button.bg-brand-500:hover { background: var(--color-accent
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
-    padding: 1px 12px 4px 1px;
+    padding: 1px 12px 5px 1px;
   }
-  #destacados > .container-shell > .grid:first-of-type::-webkit-scrollbar { display: none; }
-  #destacados > .container-shell > .grid:first-of-type > a {
-    flex: 0 0 88%;
-    scroll-snap-align: start;
-  }
-  #destacados > .container-shell > .grid:first-of-type > a > div:first-child { aspect-ratio: 4 / 3; }
-  #destacados > .container-shell > .grid:first-of-type > a > div:last-child { padding: 14px; }
-  #destacados > .container-shell > .grid:first-of-type > a > div:last-child > span:first-child { display: none; }
-  #destacados > .container-shell > .grid:first-of-type h3 { margin-top: 0; font-size: 17px; line-height: 1.25; }
-  #destacados > .container-shell > .grid:first-of-type p {
-    display: -webkit-box;
-    margin-top: 5px;
-    overflow: hidden;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
-    font-size: 14px;
-    line-height: 1.4;
-  }
-  #destacados > .container-shell > .grid:first-of-type h3 + p + span { margin-top: 10px; min-height: 40px; font-size: 14px; }
+  #destacados .grid:has(> a[href*="electricidad-automotriz"])::-webkit-scrollbar { display: none; }
+  #destacados .grid:has(> a[href*="electricidad-automotriz"]) > a { flex: 0 0 86%; scroll-snap-align: start; display: block; min-height: 0; padding: 0; }
+  #destacados .grid:has(> a[href*="electricidad-automotriz"]) > a > div:first-child { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 0; background: var(--color-background); }
+  #destacados .grid:has(> a[href*="electricidad-automotriz"]) > a > div:first-child img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  #destacados .grid:has(> a[href*="electricidad-automotriz"]) > a > div:first-child::after { display: none; content: none; }
+  #destacados .grid:has(> a[href*="electricidad-automotriz"]) > a > div:last-child { display: block; padding: 13px 14px 14px; }
+  #destacados .grid:has(> a[href*="electricidad-automotriz"]) > a > div:last-child > span:first-child { display: block; }
+  #destacados .grid:has(> a[href*="electricidad-automotriz"]) h3 { margin-top: 5px; font-size: 17px; line-height: 1.25; }
+  #destacados .grid:has(> a[href*="electricidad-automotriz"]) p { display: -webkit-box; margin-top: 5px; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 1; font-size: 13px; line-height: 1.4; }
+  #destacados .grid:has(> a[href*="electricidad-automotriz"]) h3 + p + span { margin-top: 9px; min-height: 36px; font-size: 13px; }
 
-  /* Secondary catalogue: max six, icon-like compact rows, no photography. */
-  #destacados > .container-shell > .grid:nth-of-type(2) {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-  #destacados > .container-shell > .grid:nth-of-type(2) > a:nth-child(n+7) { display: none; }
-  #destacados > .container-shell > .grid:nth-of-type(2) > a {
-    min-height: 52px;
-    display: flex;
-    align-items: center;
-    padding: 10px 12px;
-  }
-  #destacados > .container-shell > .grid:nth-of-type(2) > a > div:first-child {
-    width: 36px;
-    height: 36px;
-    flex: 0 0 36px;
-    aspect-ratio: 1;
-    border-radius: 8px;
-    background: #eff6ff;
-  }
-  #destacados > .container-shell > .grid:nth-of-type(2) > a > div:first-child img { display: none; }
-  #destacados > .container-shell > .grid:nth-of-type(2) > a > div:first-child::after {
-    content: "";
-    display: block;
-    width: 10px;
-    height: 10px;
-    margin: 13px;
-    border-right: 2px solid var(--color-primary);
-    border-bottom: 2px solid var(--color-primary);
-    transform: rotate(-45deg);
-  }
-  #destacados > .container-shell > .grid:nth-of-type(2) > a > div:last-child {
-    display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    padding: 0 0 0 12px;
-  }
-  #destacados > .container-shell > .grid:nth-of-type(2) > a > div:last-child > span:first-child,
-  #destacados > .container-shell > .grid:nth-of-type(2) p { display: none; }
-  #destacados > .container-shell > .grid:nth-of-type(2) h3 { margin: 0; font-size: 15px; line-height: 1.25; }
-  #destacados > .container-shell > .grid:nth-of-type(2) h3 + span {
-    margin: 0;
-    min-height: 32px;
-    align-items: center;
-    white-space: nowrap;
-    font-size: 13px;
-  }
+  /* Secondary catalogue stays compact; no more than six items. */
+  #destacados .grid:has(> a[href*="reparaciones-generales"]) > a:nth-child(n+7) { display: none; }
 
   #como-funciona { padding-top: 22px; padding-bottom: 22px; }
   #como-funciona h2 { font-size: 22px; }
   #como-funciona .grid.overflow-hidden > div { min-height: 54px; padding: 10px 14px; }
   #como-funciona .grid.overflow-hidden h3 { font-size: 14px; font-weight: 600; }
-
   #atencion-central .rounded-xl { gap: 16px; padding: 18px; }
   #atencion-central h2 { font-size: 24px; line-height: 1.15; }
   #atencion-central p { font-size: 14px; line-height: 1.45; }
   #atencion-central a { min-height: 48px; font-size: 14px; }
-
   #prestadores .rounded-xl { gap: 12px; padding: 16px; }
   #prestadores h2 { font-size: 19px; line-height: 1.25; }
   #prestadores p { font-size: 14px; }
   #prestadores a { min-height: 44px; font-size: 13px; }
-
   footer { padding-top: 18px !important; padding-bottom: 28px !important; }
   footer .container-shell { gap: 16px; }
   footer p, footer a { font-size: 13px; }
-
-  /* Persistent request CTA: safe-area aware and never flush to the home indicator. */
-  a[href="#solicitud"].fixed,
-  a.fixed[href*="solicitud"] {
-    bottom: max(12px, env(safe-area-inset-bottom));
-  }
+  a[href="#solicitud"].fixed, a.fixed[href*="solicitud"] { bottom: max(12px, env(safe-area-inset-bottom)); }
   main { padding-bottom: calc(88px + env(safe-area-inset-bottom)); }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  #destacados > .container-shell > .grid:first-of-type { scroll-behavior: auto; }
-}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
