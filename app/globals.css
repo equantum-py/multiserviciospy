@@ -2,13 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-:root { color-scheme: light; }
+:root {
+  color-scheme: light;
+  --color-primary: #102a43;
+  --color-primary-dark: #0b1f33;
+  --color-accent: #f97316;
+  --color-accent-hover: #c2410c;
+  --color-accent-soft: #fff4eb;
+  --color-background: #f6f8fa;
+  --color-surface: #ffffff;
+  --color-text-primary: #17212b;
+  --color-text-secondary: #64748b;
+  --color-border: #e2e8f0;
+}
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
-  background: #f3f5f2;
-  color: #17251d;
+  background: var(--color-background);
+  color: var(--color-text-primary);
   font-family: var(--font-inter), Inter, Arial, Helvetica, sans-serif;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
@@ -17,10 +29,10 @@ body {
 a { color: inherit; text-decoration: none; }
 button, input, select { font: inherit; }
 h1, h2, h3, p { margin-top: 0; }
-::selection { background: #f2b705; color: #17251d; }
+::selection { background: #fed7aa; color: var(--color-primary-dark); }
 .container-shell { width: min(1320px, calc(100% - 40px)); margin-inline: auto; }
-.platform-surface { background: #fff; border: 1px solid rgba(23,37,29,.08); }
-.platform-focus:focus-visible { outline: 2px solid #f2b705; outline-offset: 3px; }
+.platform-surface { background: var(--color-surface); border: 1px solid var(--color-border); }
+.platform-focus:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
 @media (max-width: 640px) {
   .container-shell { width: min(100% - 24px, 1320px); }
 }
