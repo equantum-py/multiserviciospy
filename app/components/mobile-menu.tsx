@@ -89,13 +89,13 @@ export function MobileMenu() {
             id="mobile-navigation"
             className="absolute right-0 top-0 flex h-full w-[min(86vw,340px)] flex-col bg-white px-5 pb-[calc(1.5rem+env(safe-area-inset-bottom))] pt-[calc(1.25rem+env(safe-area-inset-top))] shadow-2xl"
           >
-            <div className="flex items-center justify-between border-b border-black/[.06] pb-4">
-              <span className="text-sm font-semibold">Menú</span>
+            <div className="flex items-center justify-between border-b border-slate-200 pb-4">
+              <span className="text-sm font-semibold text-ink">Menú</span>
               <button
                 ref={closeButtonRef}
                 type="button"
                 onClick={() => setOpen(false)}
-                className="grid h-11 w-11 place-items-center rounded-xl border border-black/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
+                className="grid h-11 w-11 place-items-center rounded-xl border border-slate-200 text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
                 aria-label="Cerrar menú"
               >
                 <X size={20} />
@@ -108,7 +108,7 @@ export function MobileMenu() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="flex min-h-12 items-center border-b border-black/[.06] text-[15px] font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
+                  className="flex min-h-12 items-center border-b border-slate-200 text-[15px] font-medium text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
                 >
                   {link.label}
                 </a>
@@ -118,7 +118,7 @@ export function MobileMenu() {
             <a
               href="#solicitud"
               onClick={() => setOpen(false)}
-              className="mt-6 flex min-h-12 items-center justify-center rounded-xl bg-brand-500 px-5 text-sm font-semibold text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+              className="mt-6 flex min-h-12 items-center justify-center rounded-xl bg-brand-500 px-5 text-sm font-semibold text-white transition hover:bg-brand-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
             >
               Solicitar atención
             </a>
