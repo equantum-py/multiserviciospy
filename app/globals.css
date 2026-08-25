@@ -34,6 +34,19 @@ h1, h2, h3, p { margin-top: 0; }
 .platform-surface { background: var(--color-surface); border: 1px solid var(--color-border); }
 .platform-focus:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
 
+/* Home banner slot.
+   TEMPORARY development artwork: replace these URLs with the final campaign banners.
+   Recommended source sizes: desktop 1920x600, mobile 1080x1350. */
+#inicio {
+  min-height: 0;
+  aspect-ratio: 16 / 5;
+  background-image: url("https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1920&h=600&q=86");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#inicio > .container-shell { display: none; }
+
 /* Palette migration for approved Home structure. These overrides intentionally
    redistribute legacy green/yellow surfaces instead of doing a blind color swap. */
 main[class~="bg-[#f3f5f2]"] { background: var(--color-background) !important; }
@@ -58,4 +71,9 @@ button.bg-brand-500:hover { background: var(--color-accent-hover) !important; }
 
 @media (max-width: 640px) {
   .container-shell { width: min(100% - 24px, 1320px); }
+  #inicio {
+    aspect-ratio: 4 / 5;
+    background-image: url("https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1080&h=1350&q=84");
+    background-position: center;
+  }
 }
