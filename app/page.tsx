@@ -1,8 +1,6 @@
 import {
   ArrowRight,
-  BadgeCheck,
   Car,
-  ClipboardCheck,
   Hammer,
   Headphones,
   Home,
@@ -11,7 +9,6 @@ import {
   MessageCircle,
   Paintbrush,
   Search,
-  ShieldCheck,
   Snowflake,
   Wrench,
   Zap,
@@ -284,65 +281,54 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="como-funciona" className="scroll-mt-20 py-8 sm:py-10">
-        <div className="container-shell grid gap-5 lg:grid-cols-[.8fr_1.2fr] lg:items-center">
+      <section id="como-funciona" className="scroll-mt-20 py-6 sm:py-7">
+        <div className="container-shell grid gap-4 lg:grid-cols-[.55fr_1.45fr] lg:items-center lg:gap-6">
           <div>
             <p className="mb-1 text-[12px] font-medium text-brand-600">Cómo funciona</p>
-            <h2 className="max-w-md text-[24px] font-normal tracking-[-.025em] sm:text-[29px]">Vos contás la necesidad. Nosotros gestionamos la solución.</h2>
+            <h2 className="text-[24px] font-normal tracking-[-.025em] sm:text-[27px]">Así de simple.</h2>
           </div>
-          <div className="grid divide-y divide-black/[.08] overflow-hidden rounded-xl bg-white ring-1 ring-black/[.07] sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-            {[["01", "Contanos qué necesitás"], ["02", "Recibí atención y cotización"], ["03", "Coordinamos el servicio"]].map(([number, title]) => (
-              <div key={number} className="p-4 sm:p-5">
-                <span className="text-[12px] font-semibold text-brand-600">{number}</span>
-                <h3 className="mt-1.5 text-[14px] font-semibold leading-snug">{title}</h3>
+          <div className="grid gap-0 overflow-hidden rounded-xl bg-white ring-1 ring-black/[.07] sm:grid-cols-3">
+            {[["01", "Contanos qué necesitás"], ["02", "Recibí atención y cotización"], ["03", "Coordinamos el servicio"]].map(([number, title], index) => (
+              <div key={number} className="relative flex min-h-[62px] items-center gap-3 border-b border-black/[.07] px-4 py-3 last:border-b-0 sm:min-h-[70px] sm:border-b-0 sm:border-r sm:last:border-r-0">
+                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#fff1b8] text-[11px] font-semibold text-[#775600]">{number}</span>
+                <h3 className="text-[13px] font-semibold leading-snug sm:text-[14px]">{title}</h3>
+                {index < 2 && <ArrowRight size={15} className="ml-auto hidden shrink-0 text-black/30 sm:block" aria-hidden="true" />}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="atencion-central" className="scroll-mt-20 pb-8 sm:pb-10">
-        <div className="container-shell grid overflow-hidden rounded-xl bg-ink text-white lg:grid-cols-[1fr_auto]">
-          <div className="p-6 sm:p-8">
-            <div className="flex items-center gap-2 text-[12px] font-medium text-brand-400"><MessageCircle size={16} /> Atención central {siteConfig.brandName}</div>
-            <h2 className="mt-2.5 text-[25px] font-normal tracking-tight sm:text-[30px]">{siteConfig.centralAttentionLabel}</h2>
-            <p className="mt-2 max-w-2xl text-[14px] leading-6 text-white/70">Centralizamos la atención, cotización y coordinación de tus servicios desde un solo lugar.</p>
-          </div>
-          <div className="flex items-center border-t border-white/10 p-6 lg:border-l lg:border-t-0 lg:px-8">
-            <a href="#solicitud" className={`inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-lg bg-brand-500 px-5 text-[14px] font-semibold text-ink transition hover:bg-brand-400 lg:w-auto ${focus}`}>Solicitar atención <ArrowRight size={16} /></a>
-          </div>
-        </div>
-      </section>
-
-      <section className="pb-8 sm:pb-10">
-        <div className="container-shell rounded-xl bg-[#e9eeea] px-5 py-6 sm:px-7 sm:py-7">
-          <div className="mb-5">
-            <p className="mb-1 text-[12px] font-medium text-brand-600">Confianza operativa</p>
-            <h2 className="text-[22px] font-normal tracking-tight sm:text-[25px]">Un proceso claro de principio a fin</h2>
-          </div>
-          <div className="grid gap-5 sm:grid-cols-3 sm:gap-0">
-            <div className="sm:pr-6"><Headphones size={20} className="text-brand-600" /><h3 className="mt-2.5 text-[15px] font-semibold">Atención centralizada</h3><p className="mt-1.5 text-[14px] leading-5 text-black/60">Un proceso simple para resolver tu necesidad.</p></div>
-            <div className="border-black/10 sm:border-l sm:px-6"><ClipboardCheck size={20} className="text-brand-600" /><h3 className="mt-2.5 text-[15px] font-semibold">Cotización clara</h3><p className="mt-1.5 text-[14px] leading-5 text-black/60">Información antes de coordinar el servicio.</p></div>
-            <div className="border-black/10 sm:border-l sm:pl-6"><ShieldCheck size={20} className="text-brand-600" /><h3 className="mt-2.5 text-[15px] font-semibold">Coordinación</h3><p className="mt-1.5 text-[14px] leading-5 text-black/60">Un proceso centralizado de principio a fin.</p></div>
+      <section id="atencion-central" className="scroll-mt-20 pb-4 sm:pb-5">
+        <div className="container-shell">
+          <div className="flex flex-col gap-5 rounded-xl bg-ink p-5 text-white sm:p-6 lg:flex-row lg:items-center lg:justify-between lg:gap-8 lg:px-7">
+            <div className="min-w-0">
+              <div className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[.02em] text-brand-400"><Headphones size={15} /> Atención central {siteConfig.brandName}</div>
+              <h2 className="mt-2 text-[25px] font-normal leading-tight tracking-[-.025em] sm:text-[29px]">Un número. Una atención. <span className="text-brand-400">Todos los servicios.</span></h2>
+              <p className="mt-2 max-w-2xl text-[14px] leading-5 text-white/75">Centralizamos la atención, cotización y coordinación de tus servicios desde un solo lugar.</p>
+            </div>
+            <a href="#solicitud" className={`inline-flex min-h-12 w-full shrink-0 items-center justify-center gap-2 rounded-lg bg-brand-500 px-5 text-[14px] font-semibold text-ink transition hover:bg-brand-400 lg:w-auto ${focus}`}>Solicitar atención <ArrowRight size={16} /></a>
           </div>
         </div>
       </section>
 
-      <section id="prestadores" className="scroll-mt-20 pb-8 sm:pb-10">
-        <div className="container-shell flex flex-col gap-4 rounded-xl bg-white p-5 ring-1 ring-black/[.07] sm:flex-row sm:items-center sm:justify-between sm:p-6">
-          <div>
-            <p className="mb-1 text-[12px] font-medium text-brand-600">Red de prestadores</p>
-            <h2 className="text-[20px] font-normal tracking-tight sm:text-[23px]">¿Sos profesional o tenés una empresa de servicios?</h2>
-            <p className="mt-1 text-[14px] text-black/60">Formá parte de nuestra red de prestadores.</p>
+      <section id="prestadores" className="scroll-mt-20 pb-4 sm:pb-5">
+        <div className="container-shell">
+          <div className="flex flex-col gap-4 rounded-xl bg-white p-5 ring-1 ring-black/[.07] sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:px-6 sm:py-5">
+            <div>
+              <p className="mb-1 text-[11px] font-medium uppercase tracking-[.02em] text-brand-600">Red de prestadores</p>
+              <h2 className="text-[20px] font-normal leading-tight tracking-[-.02em] sm:text-[22px]">¿Sos profesional o tenés una empresa de servicios?</h2>
+              <p className="mt-1 text-[14px] text-black/65">Formá parte de nuestra red de prestadores.</p>
+            </div>
+            <a href="#atencion-central" className={`inline-flex min-h-11 w-full shrink-0 items-center justify-center gap-2 rounded-lg bg-ink px-5 text-[13px] font-medium text-white transition hover:bg-[#26372d] sm:w-auto ${focus}`}>Quiero trabajar con {siteConfig.brandName} <ArrowRight size={15} /></a>
           </div>
-          <a href="#atencion-central" className={`inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-lg bg-ink px-5 text-[13px] font-medium text-white transition hover:bg-[#26372d] ${focus}`}>Quiero trabajar con {siteConfig.brandName} <ArrowRight size={15} /></a>
         </div>
       </section>
 
-      <footer className="border-t border-black/[.07] bg-white py-7 sm:py-8">
-        <div className="container-shell grid gap-6 sm:grid-cols-[1.4fr_1fr_1fr] sm:items-start">
-          <div><a href="#inicio" className={focus}><Logo /></a><p className="mt-3 text-[13px] text-black/60">Central integral de servicios para Paraguay.</p><p className="mt-2 text-[12px] text-black/45">© 2026 {siteConfig.brandName}</p></div>
-          <div><p className="mb-2 text-[12px] font-semibold text-black/60">Navegación</p><div className="flex flex-col gap-2 text-[13px] text-black/60"><a className={focus} href="#categorias">Servicios</a><a className={focus} href="#como-funciona">Cómo funciona</a><a className={focus} href="#prestadores">Prestadores</a></div></div>
+      <footer className="border-t border-black/[.07] bg-white py-5 sm:py-6">
+        <div className="container-shell grid gap-5 sm:grid-cols-[1.4fr_1fr_1fr] sm:items-start">
+          <div><a href="#inicio" className={focus}><Logo /></a><p className="mt-2.5 text-[13px] text-black/60">Central integral de servicios para Paraguay.</p><p className="mt-1.5 text-[12px] text-black/45">© 2026 {siteConfig.brandName}</p></div>
+          <div><p className="mb-2 text-[12px] font-semibold text-black/60">Navegación</p><div className="flex flex-col gap-1.5 text-[13px] text-black/60"><a className={focus} href="#categorias">Servicios</a><a className={focus} href="#destacados">Destacados</a><a className={focus} href="#como-funciona">Cómo funciona</a><a className={focus} href="#prestadores">Prestadores</a></div></div>
           <div><p className="mb-2 text-[12px] font-semibold text-black/60">Atención</p><p className="text-[13px] leading-5 text-black/60">Un solo contacto para evaluación, cotización y coordinación.</p></div>
         </div>
       </footer>
