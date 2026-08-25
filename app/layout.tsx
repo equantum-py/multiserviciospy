@@ -31,7 +31,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           rel="noopener noreferrer"
           aria-label="Contactar a TodosServicios PY por WhatsApp"
           title="Contactar por WhatsApp"
-          className="fixed bottom-20 right-4 z-50 grid h-14 w-14 place-items-center rounded-full bg-[#25D366] text-white shadow-lg transition hover:scale-105 hover:bg-[#20bd5a] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#25D366] sm:bottom-5 sm:right-5 sm:h-16 sm:w-16"
+          className="fixed bottom-5 right-5 z-50 hidden h-16 w-16 place-items-center rounded-full bg-[#25D366] text-white shadow-lg transition hover:scale-105 hover:bg-[#20bd5a] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#25D366] sm:grid"
         >
           <WhatsAppIcon />
         </a>
