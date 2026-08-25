@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
 import { ArrowLeft, Wrench } from "lucide-react";
 import { ServicesCatalog } from "./services-catalog";
 
@@ -7,6 +8,10 @@ export const metadata: Metadata = {
   title: "Servicios para hogar, vehículo y empresas | TodosServicios PY",
   description: "Encontrá servicios de electricidad, refrigeración, reparaciones, mantenimiento, construcción y más con atención centralizada en TodosServicios PY.",
 };
+
+function CatalogFallback() {
+  return <div className="mt-7 min-h-[320px] animate-pulse rounded-2xl border border-border bg-white" aria-label="Cargando catálogo de servicios" />;
+}
 
 export default function ServicesPage() {
   return (
@@ -30,7 +35,11 @@ export default function ServicesPage() {
       </section>
 
       <section className="py-6 sm:py-8">
-        <div className="container-shell"><ServicesCatalog /></div>
+        <div className="container-shell">
+          <Suspense fallback={<CatalogFallback />}>
+            <ServicesCatalog />
+          </Suspense>
+        </div>
       </section>
     </main>
   );
