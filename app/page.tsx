@@ -18,6 +18,12 @@ const compactServices = [
   { title: "Electricidad para el hogar", text: "Instalaciones · fallas · mantenimiento", type: "Atención rápida", icon: Zap, slug: "electricidad" },
   { title: "Reparaciones generales", text: "Arreglos y mantenimiento cotidiano", type: "Atención rápida", icon: Wrench, slug: "reparaciones-generales" },
   { title: "Chapería y pintura", text: "Evaluación y cotización según el trabajo", type: "Con evaluación", icon: Paintbrush, slug: "chaperia" },
+  { title: "Plomería", text: "Pérdidas · cañerías · sanitarios", type: "Atención rápida", icon: Wrench, slug: "plomeria" },
+  { title: "Pintura y terminaciones", text: "Interior · exterior · mantenimiento", type: "Con evaluación", icon: Paintbrush, slug: "pintura" },
+  { title: "Limpieza", text: "Hogar · oficinas · limpieza profunda", type: "Atención rápida", icon: Home, slug: "limpieza-residencial" },
+  { title: "Cámaras de seguridad", text: "Instalación · configuración · mantenimiento", type: "Servicio especializado", icon: Wrench, slug: "camaras-seguridad" },
+  { title: "Fletes y mudanzas", text: "Traslados · muebles · cargas pequeñas", type: "Con evaluación", icon: Car, slug: "mudanzas" },
+  { title: "Construcción y remodelación", text: "Obras · mejoras · trabajos a medida", type: "Con evaluación", icon: Hammer, slug: "construccion" },
 ];
 const focus = "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500";
 const Logo = () => <span className="flex items-center gap-2.5"><span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-brand-500 text-white"><Wrench size={18} strokeWidth={2} /></span><span className="whitespace-nowrap text-[15px] font-semibold tracking-[-.03em] min-[390px]:text-base sm:text-lg">TODOSERVICIOS <span className="text-brand-400">PY</span></span></span>;
