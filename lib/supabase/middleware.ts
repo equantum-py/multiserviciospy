@@ -5,8 +5,10 @@ export async function updateAdminSession(request: NextRequest) {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
   const loginUrl = new URL("/admin/login", request.url);
+  const isLoginPage = request.nextUrl.pathname === "/admin/login";
 
   if (!url || !key) {
+    if (isLoginPage) return NextResponse.next({ request });
     loginUrl.searchParams.set("error", "configuration");
     return NextResponse.redirect(loginUrl);
   }
@@ -24,7 +26,7 @@ export async function updateAdminSession(request: NextRequest) {
   });
 
   const { data: { user } } = await supabase.auth.getUser();
-  if (request.nextUrl.pathname === "/admin/login") return response;
+  if (isLoginPage) return response;
   if (!user) {
     loginUrl.searchParams.set("next", `${request.nextUrl.pathname}${request.nextUrl.search}`);
     return NextResponse.redirect(loginUrl);
