@@ -63,7 +63,7 @@ export default async function AdminDashboardPage() {
                 </ul>
               )}
             </AdminSection>
-            <AdminSystemStatus />
+            <AdminSystemStatus scope={data.scope} />
           </div>
         </>
       ) : (
