@@ -12,6 +12,8 @@ const links = [
 
 export function MobileMenu() {
   const [open, setOpen] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -22,19 +24,47 @@ export function MobileMenu() {
     closeButtonRef.current?.focus();
 
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpen(false);
+      if (event.key === "Escape") {
+        setOpen(false);
+        return;
+      }
+
+      if (event.key !== "Tab" || !panelRef.current) return;
+
+      const focusable = Array.from(
+        panelRef.current.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        ),
+      );
+
+      if (focusable.length === 0) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const active = document.activeElement;
+
+      if (event.shiftKey && active === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && active === last) {
+        event.preventDefault();
+        first.focus();
+      }
     };
 
     window.addEventListener("keydown", onKeyDown);
+
     return () => {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", onKeyDown);
+      triggerRef.current?.focus();
     };
   }, [open]);
 
   return (
     <>
       <button
+        ref={triggerRef}
         type="button"
         onClick={() => setOpen(true)}
         className="grid h-11 w-11 place-items-center rounded-xl border border-black/10 bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 sm:hidden"
@@ -47,8 +77,18 @@ export function MobileMenu() {
 
       {open && (
         <div className="fixed inset-0 z-50 sm:hidden" role="dialog" aria-modal="true" aria-label="Menú principal">
-          <button className="absolute inset-0 bg-black/35" aria-label="Cerrar menú" onClick={() => setOpen(false)} />
-          <div id="mobile-navigation" className="absolute right-0 top-0 flex h-full w-[min(86vw,340px)] flex-col bg-white px-5 pb-6 pt-5 shadow-2xl">
+          <button
+            type="button"
+            className="absolute inset-0 bg-black/35"
+            aria-label="Cerrar menú"
+            onClick={() => setOpen(false)}
+            tabIndex={-1}
+          />
+          <div
+            ref={panelRef}
+            id="mobile-navigation"
+            className="absolute right-0 top-0 flex h-full w-[min(86vw,340px)] flex-col bg-white px-5 pb-6 pt-5 shadow-2xl"
+          >
             <div className="flex items-center justify-between border-b border-black/[.06] pb-4">
               <span className="text-sm font-semibold">Menú</span>
               <button
